@@ -100,8 +100,11 @@ body {
   font-weight: 400;
   line-height: 1.75;
   color: var(--textColor);
-  max-width: var(--max-width);
+ 
   font-size: 1.6rem;
+}
+section{
+  max-width: var(--max-width);
 }
 
 
@@ -161,8 +164,24 @@ ul {
   display: block;
   object-fit: cover;
 }
-
-
+input:focus{
+  outline: none;
+}
+button{
+  font-size: 2rem;
+  color: var(--grey-500);
+  padding: 0.4em 0.75em;
+  background: var(--purple-600);
+  border-radius: 5px;
+  border: none;
+  transition: 0.4s ease-in-out;
+}
+button:hover{
+  background: var(--grey-500);
+  color:var(--purple-700);
+  transform: scale(1.05);
+  border: 1px solid var(--purple-700)
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

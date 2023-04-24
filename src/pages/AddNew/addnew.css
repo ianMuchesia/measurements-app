@@ -1,0 +1,75 @@
+.addnew-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addnew-title {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.addnew-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 2em;
+}
+.addnew-form span {
+  font-weight: 300;
+}
+.cone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.cone h3 {
+  text-align: center;
+  text-decoration: underline;
+}
+.addnew-section {
+  padding: 1em 2em;
+}
+
+.addnew-title h2 {
+  text-align: center;
+  max-width: 70%;
+}
+
+.addnew-img {
+  height: 250px;
+  width: 200px;
+}
+
+.cylinder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.cylinder h3 {
+  text-align: center;
+  text-decoration: underline;
+}
+.radiusHeight {
+  display: flex;
+  flex-direction: column;
+  gap: 0em;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0.5em 0em;
+}
+
+.radiusHeight input {
+  border: none;
+  background: var(--purple-100);
+  padding: 0.4em 0.75em;
+  border-radius: 5px;
+  font-size: 1em;
+}
+.radiusHeight input:focus {
+  border: 1px solid var(--purple-400);
+}
+.calculate-btn {
+  width: 150px;
+}

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <header>
+    <header className="header">
       <div className="nav-center">
         <div
           className="top-bar"
@@ -26,6 +26,7 @@ const Navbar = () => {
           </div>
 
           <ul className="nav-links">
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/AddNew">Add New</Link></li>
             <li>Log Out</li>
           </ul>

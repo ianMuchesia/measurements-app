@@ -1,8 +1,8 @@
-import coneImage from "./cone.png"
+import cloneImage from "./cone.png"
 import cylinderImage from './cylinder.png'
 
 
 export {
-    coneImage,
+    cloneImage,
     cylinderImage
 }
