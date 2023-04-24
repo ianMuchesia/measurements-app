@@ -1,0 +1,106 @@
+.section-login{
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    padding: 2em;
+	
+
+
+}
+.login-center{
+	width: 350px;
+	height: 500px;
+
+	overflow: hidden;
+
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px var(--purple-400);
+}
+.login-title{
+   
+    text-align: center;
+    margin: 1em 0em;
+}
+.signup{
+	position: relative;
+	width:100%;
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.signup h4{
+    text-align: center;
+    max-width: 70%;
+    
+}
+.section-login label{
+	color: #fff;
+	font-size: 2.3em;
+	justify-content: center;
+	display: flex;
+	margin: 60px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.signup-input{
+	width: 60%;
+
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 0.4em 0.75em;
+    font-size: 1.7rem;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+.passwordContainer h5{
+    margin-top: -2rem;
+}
+.login-input{
+    background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 0.4em 0.75em;
+    font-size: 1.7rem;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+
+}
+.section-login button{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+
+.login{
+	height: 460px;
+	background: #eee;
+	border-radius: 60% / 10%;
+	transform: translateY(-180px);
+	transition: .8s ease-in-out;
+}
+.login label{
+	color: #573b8a;
+	transform: scale(.6);
+}
+

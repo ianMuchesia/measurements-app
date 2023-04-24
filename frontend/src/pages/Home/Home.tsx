@@ -2,7 +2,8 @@ import './home.css'
 import {AiOutlineEdit, AiOutlineDelete} from 'react-icons/ai'
 const Home = () => {
   return (
-    <section className='section-home'>
+    <section>
+      <div className="home-center">
       <div className="home-title">
       <h1>
         Welcome Name
@@ -36,6 +37,8 @@ const Home = () => {
           
         </div>
       </div>
+      </div>
+     
    
     </section>
   )

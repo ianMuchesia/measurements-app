@@ -182,6 +182,14 @@ button:hover{
   transform: scale(1.05);
   border: 1px solid var(--purple-700)
 }
+main{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+section{
+  max-width: 1120px;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
