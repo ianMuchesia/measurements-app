@@ -20,9 +20,15 @@ const connectDB = require('./database/connectDB')
 
 
 //routers
+const authRoute = require('./routes/authRoutes')
+const measurementRoute = require('./routes/measurementsRoutes')
+
 
 
 //middleware
+const notFoundMiddleWare = require('./middleware/not-found')
+const errorHandlerMiddleWare = require('./middleware/error-handler')
+
 
 
 
@@ -46,8 +52,11 @@ app.use(cookieParser(process.env.JWT_SECRET));
 
 
 //routes
+ app.use('/api/v1/auth', authRoute)
+app.use('/api/v1/measurements', measurementRoute ) 
 
-
+app.use(errorHandlerMiddleWare)
+app.use(notFoundMiddleWare)
 
 const port = process.env.PORT || 3000
 
