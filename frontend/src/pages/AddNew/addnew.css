@@ -9,9 +9,7 @@
   margin-bottom: 1em;
 }
 .addnew-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  display: grid;
   gap: 2em;
 }
 .addnew-form span {
@@ -72,4 +70,21 @@
 }
 .calculate-btn {
   width: 150px;
+}
+
+@media screen and (min-width:800px){
+ .addnew-form{
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  width: 100%;
+
+ 
+ }
+ .addnew-results{
+  grid-column: span 2 / span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  
+ }
 }
