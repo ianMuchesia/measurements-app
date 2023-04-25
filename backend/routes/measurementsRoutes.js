@@ -1,15 +1,17 @@
 const express = require('express')
 const { getAllMeasurements, getSingleMeasurement, deleteMeasurement, updateMeasurements, createMeasurements } = require('../controllers/measurements')
+const authenticateUser = require('../middleware/authentication')
+
 
 const router = express.Router()
 
 
-router.get('/' , getAllMeasurements)
+router.get('/' ,authenticateUser, getAllMeasurements)
 
-router.post('/:id' , createMeasurements)
-router.patch('/:id' , updateMeasurements)
-router.delete('/:id' , deleteMeasurement)
-router.get('/:id' , getSingleMeasurement)
+router.post('/' ,authenticateUser, createMeasurements)
+router.patch('/:id' ,authenticateUser, updateMeasurements)
+router.delete('/:id' ,authenticateUser,  deleteMeasurement)
+router.get('/:id' ,authenticateUser,  getSingleMeasurement)
 
 
 module.exports = router
