@@ -103,9 +103,6 @@ body {
 
   font-size: 1.6rem;
 }
-section{
-  max-width: var(--max-width);
-}
 
 
 a {
@@ -195,18 +192,3 @@ button:hover{
   }
 }
 
-@media screen and (min-width: 800px){
-  main{
-   max-width: 90%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-  }
-}
-
-
-@media screen and (min-width: 1000px){
-  main{
-    max-width: 85%;
-  }
-}
