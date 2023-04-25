@@ -24,5 +24,7 @@ const updateMeasurements = async(req , res)=>{
 
 
 module.exports = {
-    getAllMeasurements,getSingleMeasurement, createMeasurements, deleteMeasurement, updateMeasurements
+    getAllMeasurements,
+    getSingleMeasurement, createMeasurements, deleteMeasurement,
+     updateMeasurements
 }

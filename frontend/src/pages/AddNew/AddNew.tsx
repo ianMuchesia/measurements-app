@@ -5,7 +5,7 @@ import "./addnew.css";
 interface formState {
   coneRadius?: number;
   coneHeight?: number;
-  cylinderRadius?: number;
+ 
   cylinderHeight?: number;
   numberOfCylinders?: number;
 }
@@ -14,7 +14,7 @@ const AddNew = () => {
   const [formState, setFormState] = useState<formState>({
     coneRadius: undefined,
     coneHeight: undefined,
-    cylinderRadius: undefined,
+  
     cylinderHeight: undefined,
     numberOfCylinders: 1,
   });
@@ -129,7 +129,7 @@ const AddNew = () => {
               alt="cylinder image"
               className="addnew-img"
             />
-            <div className="radiusHeight">
+           {/*  <div className="radiusHeight">
               <label htmlFor="cylinder-radius">Radius</label>
               <input
                 type="number"
@@ -138,7 +138,7 @@ const AddNew = () => {
                 value={formState.cylinderRadius || ""}
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
             <div className="radiusHeight">
               <label htmlFor="cylinderHeight">Height</label>
               <input
