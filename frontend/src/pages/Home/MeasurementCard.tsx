@@ -1,14 +1,20 @@
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import "./home.css";
+
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { Measurement } from "../../@types/types";
 import { Link } from "react-router-dom";
+
+
 interface Props {
   measurement: Measurement;
+  handleDelete: (id: string) => Promise<void>;
 }
 
-const MeasurementCard = ({ measurement }: Props) => {
+const MeasurementCard = ({ measurement, handleDelete }: Props) => {
+
+    
   return (
     <div className="measurements-card">
       <h4>Name: {measurement.title}</h4>
@@ -63,7 +69,7 @@ const MeasurementCard = ({ measurement }: Props) => {
             <span className="tool-tip-delete">Delete</span>
           }
         >
-          <span>
+          <span onClick={()=>handleDelete(measurement._id)}>
             <AiOutlineDelete className="measurements-icon delete" />
           </span>
         </Tippy>

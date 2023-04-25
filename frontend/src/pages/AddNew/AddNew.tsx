@@ -1,20 +1,26 @@
 import React, { useState } from "react";
+import axios from 'axios'
 import { cloneImage, cylinderImage } from "../../assets";
 import "./addnew.css";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../service";
 
 interface formState {
   coneRadius?: number;
   coneHeight?: number;
- 
+  title:string;
   cylinderHeight?: number;
   numberOfCylinders?: number;
 }
 
 const AddNew = () => {
+  const navigate = useNavigate()
+
   const [formState, setFormState] = useState<formState>({
     coneRadius: undefined,
     coneHeight: undefined,
-  
+    title:"",
     cylinderHeight: undefined,
     numberOfCylinders: 1,
   });
@@ -78,21 +84,51 @@ const AddNew = () => {
   };
 
 
-  const handleSubmit=(event:React.FormEvent<HTMLFormElement>)=>{
+  
+  const handleSubmit=async(event:React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault()
-    const submitForm = {
-        formState,formResults
-    }
-    console.log(submitForm)
+   
+    
+    const toastId = toast.loading("Please wait...")
     try {
+     
+      const {data} = await axios.post(`${baseURL}measurements/`,
+      {
+        radius: formState.coneRadius,
+        coneHeight: formState.coneHeight,
+        cylinderHeight: formState.cylinderHeight,
+        numberOfCylinders: formState.numberOfCylinders,
+        title:formState.title,
+        volume:formResults.volume,
+        surfaceArea: formResults.surfaceArea
+
+      },
+      {withCredentials: true})
+
+      if(data.success){
+        toast.update(toastId,{render:"Update Done!", type:"success", isLoading:false})
+        navigate("/Measurements")
+      }else{
+        toast.update(toastId,{isLoading:false})
+      }
+      
+
         
-    } catch (error) {
+    } catch (error:any) {
+      console.log(error)
+      toast.update(toastId,{isLoading:false})
+      if(error.response.data){
+        toast.error(error.response.data.msg)
+      }else{
+        toast.error("Request was not successful, please try again later")
+      }
         
     }
   }
 
   return (
     <section className="addnew-section">
+      <ToastContainer/>
       <div className="addnew-center">
         <h2 className="addnew-title">Add New Measurements</h2>
 
@@ -129,16 +165,7 @@ const AddNew = () => {
               alt="cylinder image"
               className="addnew-img"
             />
-           {/*  <div className="radiusHeight">
-              <label htmlFor="cylinder-radius">Radius</label>
-              <input
-                type="number"
-                name="cylinderRadius"
-                id="cylinder-radius"
-                value={formState.cylinderRadius || ""}
-                onChange={handleChange}
-              />
-            </div> */}
+           
             <div className="radiusHeight">
               <label htmlFor="cylinderHeight">Height</label>
               <input
@@ -150,11 +177,11 @@ const AddNew = () => {
               />
             </div>
             <div className="radiusHeight">
-              <label htmlFor="cylinderHeight">Number of Cylinders</label>
+              <label htmlFor="numberOfCylinders">Number of Cylinders</label>
               <input
                 type="number"
-                name="cylinderHeight"
-                id="cylinderHeight"
+                name="numberOfCylinders"
+                id="numberOfCylinders"
                 value={formState.numberOfCylinders}
                 onChange={handleChange}
               />
@@ -172,6 +199,16 @@ const AddNew = () => {
               Volume: <span>{formResults.volume.toFixed(2)}</span>
             </h3>
           </div>
+          <div className="radiusHeight">
+              <label htmlFor="cylinderHeight">Title/Name</label>
+            <input
+                type="text"
+                name="title"
+                id="title"
+                value={formState.title || ""}
+                onChange={handleChange}
+              />
+              </div>
           <button>SAVE</button>
         </form>
       </div>

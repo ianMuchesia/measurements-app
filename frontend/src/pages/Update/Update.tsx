@@ -1,5 +1,4 @@
 
-
 import React, { useEffect, useState } from "react";
 import axios from "axios"
 import { cloneImage, cylinderImage } from "../../assets";
@@ -154,7 +153,9 @@ const Update = () => {
     } catch (error:any) {
       console.log(error)
       if(error.response.data){
-        toast.update(toastId,{render:error.response.data.msg, type:"error", isLoading:false})
+        toast.error(error.response.data.msg)
+      }else{
+        toast.error("Request was not successful, please try again later")
       }
         
     }
