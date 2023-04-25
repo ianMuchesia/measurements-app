@@ -1,6 +1,33 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import './home.css'
-import {AiOutlineEdit, AiOutlineDelete} from 'react-icons/ai'
+
+import { Measurement } from '../../@types/types'
+import { baseURL } from '../../service'
+import MeasurementCard from './MeasurementCard'
 const Home = () => {
+
+  const [ measurements , setMeasurements] = useState<Measurement[]>([])
+
+
+  useEffect(()=>{
+    let isMounted = true
+    const fetchMeasurements = async()=>{
+      try {
+        const {data} = await axios.get(`${baseURL}measurements`,{withCredentials: true})
+        if(isMounted){
+          setMeasurements(data.measurements)
+        }
+
+     
+      } catch (error) {
+        console.log(error)
+      }
+    } 
+    fetchMeasurements()
+    return ()=>{isMounted = false}
+
+  }, [])
   return (
     <section>
       <div className="home-center">
@@ -11,31 +38,11 @@ const Home = () => {
       <h3>These are your measurements</h3>
       </div>
       <div className="home-container">
-        <div className="measurements-card">
-          <h4>Name: Blah Blah Blah</h4>
-          <div className="measurements-container">
-          <div className="measurements">
-          <h5>Width: <span>70</span> </h5>
-          <h5>Width: <span>70</span></h5>
-          <h5>Width: <span>70</span></h5>
-          </div>
-        
-          <div className="measurements-calculation">
-          <h4>Surface Area: <span>70</span></h4>
-          <h4>Volume: <span>70</span></h4>
-          </div>
-          </div>
-          <div className="measurements-date">
-          <h5>Date created: <span> 00/008/00</span></h5>
-          <h5>Date mofified:<span> 00/008/00</span></h5>
-          </div>
-        <div className="measurements-action">
-        <AiOutlineEdit className="measurements-icon edit"/>
-          <AiOutlineDelete className="measurements-icon delete"/>
-        
-        </div>
-          
-        </div>
+     {measurements.length>0 && measurements.map(item=>{
+      return(
+        <MeasurementCard measurement={item} key={item._id} />
+      )
+     })}
       </div>
       </div>
      

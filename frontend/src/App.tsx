@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
-import { AddNew, Home, Login, SignUp } from "./pages";
+import { AddNew, Home, Login, SignUp, Update } from "./pages";
 import { useEffect } from "react";
 import checkAuthentication from "./store/authCheck";
 import { useAppDispatch, useAppSelector } from "./hooks";
@@ -22,7 +22,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/Measurements" element={<Home />} />
-            <Route path="/Measurements/:id" element={<Home />} />
+            <Route path="/Measurements/:id" element={<Update />} />
             <Route path="/AddNew" element={<AddNew />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/SignUp" element={<SignUp />} />
