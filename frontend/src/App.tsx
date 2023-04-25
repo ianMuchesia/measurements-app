@@ -2,12 +2,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import { AddNew, Home, Login, SignUp } from "./pages";
+import { useEffect } from "react";
+import checkAuthentication from "./store/authCheck";
+import { useAppDispatch, useAppSelector } from "./hooks";
 
 function App() {
+  const dispatch = useAppDispatch()
+  const isAuthenticated = useAppSelector(state=>state.auth.isAuthenticated)
+
+  useEffect(()=>{dispatch(checkAuthentication());},[])
+
+ 
+
+
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar isAuthenticated={isAuthenticated} />
         <main>
           <Routes>
             <Route path="/Measurements" element={<Home />} />

@@ -40,7 +40,7 @@ app.use(
   })
 ); 
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_SIDE_URLs, credentials: true}));
+app.use(cors({ origin: process.env.CLIENT_SIDE_URL, credentials: true}));
 app.use(xss());
 app.use(mongoSanitize());
 

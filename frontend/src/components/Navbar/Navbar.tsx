@@ -2,7 +2,10 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import "./navbar.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-const Navbar = () => {
+interface Props{
+  isAuthenticated:boolean;
+}
+const Navbar = ({isAuthenticated}:Props) => {
   const [toggle, setToggle] = useState(false);
   return (
     <header className="header">
@@ -28,7 +31,7 @@ const Navbar = () => {
           <ul className="nav-links">
             <li><Link to="/Measurements">Home</Link></li>
             <li><Link to="/AddNew">Add New</Link></li>
-            <li>Log Out</li>
+           {isAuthenticated ? <li>Log Out</li>:  <li><Link to="/Login">Login</Link></li> }
           </ul>
         </nav>
       </div>
